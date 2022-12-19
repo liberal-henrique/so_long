@@ -5,125 +5,97 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 21:58:24 by lliberal          #+#    #+#             */
-/*   Updated: 2022/12/14 23:29:22 by lliberal         ###   ########.fr       */
+/*   Created: 2022/12/16 19:18:15 by lliberal          #+#    #+#             */
+/*   Updated: 2022/12/18 17:12:40 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdlib.h>
-#include <stdio.h>
-#include "mlx/mlx.h"
+#include "so_long.h"
 
-typedef struct	s_vars
+enum
 {
-	void	*mlx;
-	void	*mlx_win;
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		img_width;
-	int		img_height;
-	int		endian;
-}				t_vars;
+	ON_DESTROY = 65307,
+	KEY_W = 119,
+	KEY_A = 97,
+	KEY_D = 100,
+	KEY_S = 115,
+	KEY_ESTART = 101,
+	KEY_ERASE = 102,
+	KEY_SPACE = 32,
+	KEY_PLUS = 65451,
+	KEY_MINUS = 65453,
+};
 
-// enum {
-// 	ON_DESTROY = 65307,
-// 	KEY_W = 0,
-// };
-
-// int	endGame(t_vars *vars)
-// {
-// 	(void)vars;
-// 	exit(0);
-// 	return (0);
-// }
-
-// int	keypress(int keycode, t_vars *vars)
-// {
-// 	static	int	pos;
-
-// 	printf("O valor da tecla: %i\n", keycode);
-// 	if (keycode == ON_DESTROY)
-// 		endGame(vars);
-// 	if (keycode == 32)
-// 		mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->img, 15, 15);
-// 	return (0);
-// }
-
-// int	next_frame(t_vars *vars)
-// {
-// 	static	int	i;
-
-// 	printf("Executou %d\n", ++i);
-// 	return (0);
-// }
+int	put_message(t_vars *vars)
+{
+	printf("Hello from key_hook!\n");
+	return (0);
+}
 
 void	my_mlx_pixel_put(t_vars *data, int x, int y, int color)
 {
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
+}
+
+int	start_img(t_vars *vars, char *image)
+{
+	char	*image_start;
+
+	image_start = "./public/1.xpm";
+	vars->img = mlx_xpm_file_to_image(vars->mlx, image_start, &vars->img_width, &vars->img_height);
+	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->img, vars->x, vars->y);
+	return (0);
+}
+
+int	clean_img(t_vars *vars, char *image)
+{
+	char	*image_clean;
+
+	image_clean = "./public/black1.xpm";
+	vars->img = mlx_xpm_file_to_image(vars->mlx, image_clean, &vars->img_width, &vars->img_height);
+	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->img, vars->x, vars->y);
+	return (0);
+}
+
+int	keypress(int keycode, t_vars *vars)
+{
+	static int	pos;
+
+	printf("O valor da tecla: %i\n", keycode);
+	if (keycode == ON_DESTROY)
+		endgame(vars);
+	if (keycode == KEY_SPACE)
+		put_message(vars);
+	if (keycode == KEY_D)
+		img_right(vars);
+	if (keycode == KEY_A)
+		img_left(vars);
+	if (keycode == KEY_W)
+		img_up(vars);
+	if (keycode == KEY_S)
+		img_down(vars);
+	return (0);
 }
 
 int	main(void)
 {
 	t_vars	vars;
-	int i;
-	int j;
+	char	*image;
 
-	i = 0;
-	j = 0;
-	vars.mlx = mlx_init();
-	vars.img = mlx_new_image(vars.mlx, 1920, 1080);
-	vars.mlx_win = mlx_new_window(vars.mlx, 1920, 1080, "Executing");
-	vars.addr = mlx_get_data_addr(vars.img, &vars.bits_per_pixel, &vars.line_length, &vars.endian);
-	// vars.mlx_win = mlx_new_window(vars.mlx, 1920, 1080, "Hello World!");
+	image = "./public/1.xpm";
+	vars.x = 20;
+	vars.y = 120;
+	vars.mlx = mlx_init ();
+	vars.img = mlx_new_image(vars.mlx, 80, 80);
+	vars.mlx_win = mlx_new_window(vars.mlx, 640, 480, "Executing");
 
-	while (i < 1080/2)
-	{
-		j = 0;
-		while (j < 1920/2)
-		{
-			my_mlx_pixel_put(&vars, j, i, 0x0000FF00);
-			j++;
-		}
-		i++;
-	}
-	mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.img, 0, 0);
+
+	mlx_hook(vars.mlx_win, 2, 1L << 0, keypress, &vars);
 	mlx_loop(vars.mlx);
-	return(0);
+	return (0);
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-//gcc main.c -Lmlx -lmlx -L/usr/lib -lXext -lX11
-// int	main(void)
-// {
-// 	t_vars	vars;
-
-// 	vars.mlx;
-// 	vars.mlx_win;
-// 	vars.mlx = mlx_init();
-// 	vars.mlx_win = mlx_new_window(vars.mlx, 400, 400, "Hello World1");
-// 	vars.img = mlx_xpm_file_to_image(vars.mlx_win, "1.xpm", &vars.img_width, &vars.img_height);
-// 	mlx_hook(vars.mlx_win, 17, (1L<<2), endGame, &vars);
-// 	mlx_hook(vars.mlx_win, 2, (1L<<0), keypress, &vars);
-
-
-// 	mlx_loop_hook(vars.mlx, next_frame, &vars);
-
-// 	mlx_loop(vars.mlx);
-// 	return (0);
-// }
