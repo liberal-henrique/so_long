@@ -1,0 +1,133 @@
+Goals
+
+-> Montar um plano de acao para o so_long
+-> Ler os manuais
+-> Fazer questoes de exame
+
+mlx
+mlx_loop : handle keyboard or mouse events
+mlx_new_image : manipulate images
+mlx_new_window : manage windows
+mlx_pixel_put : draw inside window
+
+
+Para nao termos nenhum leak de memoria a
+dica que recebi de alguem que ja entregou
+o so_long foi de usar a funcao DESTROY_DISPLAY.
+A pessoa disse-me que estava a tentar cuidar
+dos leaks mas nao encontrava razao para que o
+proprio codigo gera-los. Portanto, testou essa
+funcao e tudo estava completamente limpo.
+
+(16/03/2023)
+Roteiro para o so_long
+#basicamente, comecarei forcando que sejam atendidas
+a todas as demandas quanto ao formato do mapa, as dimen-
+soes necessarias, o numero de colectables e a saida.
+Em um segundo momento, buscarei desenvolver os "checkers"
+necessarios.
+Por exemplo, o meu personagem tera acesso a todos
+os colectables e a saida. No futuro, terei de desen-
+volver um codigo que fara essa analise. Teoricamente,
+eh possivel transpor esse desafio com o flood_fill.
+Eu ainda nao consegui resolver esse exercicio. Portanto,
+apenas suponho que esse seja um caminho possivel.
+
+Dia 17/03/2023
+
+Em conversa com o Ezequiel, percebi que seria mais
+importante verificar estruturar o mapa primeiro. Para
+assim evitar de misturar o leaks de memoria do mapa
+com os dos personagens. A separacao de etapas facilitaria
+o desenvolvimento continuo do projeto.
+Portanto, hoje tentarei fazer 3 coisas, que sao:
+- Criar os checkers do mapa;
+	- Deverei garantir que o file do mapa eh .ber; (OK)
+	- Deverei garantir que ha apenas os elementos: 0, 1, C, E, P; (OK)
+
+	- Depois deverei garantir que a moldura do mapa (Ok)
+	eh composta elementos "1"; Caso contrario O checker
+	de caminhos possiveis dentro do mapa nao sera possivel;
+			--> Minha primeira e ultima fileira
+			deverao ser compostas por numeros 1;
+			--> Nas fileira intermediarias o primeiro
+			e o ultimo elementos deverao compostos por 1;
+				11111111
+				10000001
+				10000001
+				10000001
+				11111111
+	- Nao permitir que o mapa seja quadrado;  (0k)
+	- Fazer o checker de caminho possivel para o player pegar
+	todos os colectables e encontrar o exit.
+- Fazer o exercicio de exame flood_fill
+- Praticar para o exame;
+
+
+
+#Precisarei de um ficheiro .ber. Terei de acessar esse
+ficheiro para inserir as informacoes la constantes dentro
+de um array 2D. Sera nessa matrix que nosso player ira
+desenvolver o jogo. Os movimentos laterais sao basicamente
+o player percorrendo os elementos do array onde ele esta
+inserido e os movimentos para frente e para tras sao
+desenvolvidos entre arrays mantendo o mesmo index.
+
+#Renderizar as imagens na tela demandara que iteremos sobre o
+array identificando os elementos que temos com as imagens que
+deverao ser inseridas em cada campo. Por exemplo:
+- 0 for an empty space,
+- 1 for a wall,
+- C for a collectible,
+- E for a map exit,
+- P for the player’s starting position.
+
+
+
+
+Ha uma exigencia para o
+formato e o significado para cada
+
+
+{
+	{110111},
+	{110111},
+	{110111},
+	{110111},
+	{110111}
+}
+
+MiniLibX MAN
+
+DESCRIPTION
+MiniLibX is an easy way to create graphical software, without any X-Window/Cocoa programming knowledge. It provides simple window creation, a drawing tool, image and basic events management.
+
+LIBRARY FUNCTIONS
+The mlx_init() function will create this connection. No parameters are needed, and it will return a void* identifier, used for further calls to the library routines.
+
+
+mlx_loop
+
+This function never returns. It is an infinite loop  that  waits for an event, and then calls a user-defined function associated with this event.  A single parameter is needed, the connection identifier mlx_ptr (see the  mlx  manual).
+
+ You can assign different functions to the three following events:
+   - A key is pressed
+   - The mouse button is pressed
+   - A part of the window should be re-drawn (this is called an "expose" event, and it is your
+   program's job to handle it).
+
+
+mlx_new_image
+
+mlx_new_image() creates a new image in memory. It returns a void * identifier needed to manipulate this image later. It only needs the size of the image to be created, using the width and height parameters, and the mlx_ptr connection identifier
+mlx_new_window
+The mlx_new_window() function creates a new window on the screen, using the size_x and size_y parameters to determine its size, and title as the text that should be displayed in the window’s title bar.
+
+mlx_clear_window() and mlx_destroy_window() respectively clear (in black) and destroy the given window. They both have the same parameters: mlx_ptr is the screen connection identifier, and win_ptr is a window identifier.
+
+
+mlx_pixel_put
+
+Parei em: https://pulgamecanica.herokuapp.com/posts/minilibx-tutorial
+
+dica: Finally, height and width are the width and height of the image.
