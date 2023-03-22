@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   image_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 19:18:15 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/22 21:41:34 by lliberal         ###   ########.fr       */
+/*   Created: 2023/03/22 11:50:55 by lliberal          #+#    #+#             */
+/*   Updated: 2023/03/22 22:17:18 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char **av)
+void	window_init(t_vars *vars)
 {
-	t_vars	vars;
-	char	**map;
-	int		fd;
+	int	x_size;
+	int	y_size;
+	int	win_w;
+	int	window_h;
 
-	if (ac != 2)
-		return (1);
-	fd = open(av[1], O_RDONLY);
-	vars.x = 20;
-	vars.y = 120;
-	if (checker_ber(av[1], ".ber") == 1)
-		exit(write(1, "Error\n", 6));
-	map = deal_rec(fd, 0, NULL);
-	check_maps_elements(map, &vars);
-	ft_validate(map, vars);
-	window_init(&vars);
-	//image_start(&vars);
-	mlx_loop(vars.mlx_ptr);
-	return (0);
+	x_size = 80;
+	y_size = 80;
+	win_w = 580;
+	window_h = 290;
+	vars->mlx_ptr = mlx_init ();
+	vars->img = mlx_new_image(vars->mlx_ptr, x_size, y_size);
+	vars->mlx_win = mlx_new_window(vars->mlx_ptr, win_w, window_h, "so_long");
+	mlx_hook(vars->mlx_win, 2, 1L << 0, keypress, vars);
 }

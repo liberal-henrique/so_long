@@ -57,13 +57,12 @@ Portanto, hoje tentarei fazer 3 coisas, que sao:
 				10000001
 				10000001
 				11111111
-	- Nao permitir que o mapa seja quadrado;  (0k)
+	- Verificar se todas as rows tem o mesmo tamanho garantindo que 
+	mapa seja retangular;
 	- Fazer o checker de caminho possivel para o player pegar
 	todos os colectables e encontrar o exit.
 - Fazer o exercicio de exame flood_fill
 - Praticar para o exame;
-
-
 
 #Precisarei de um ficheiro .ber. Terei de acessar esse
 ficheiro para inserir as informacoes la constantes dentro
@@ -82,20 +81,16 @@ deverao ser inseridas em cada campo. Por exemplo:
 - E for a map exit,
 - P for the player’s starting position.
 
+dia 22/02/2023
+
+#Precisarei garantir que ha caminhos possiveis para o player alcancar todos
+os collectables. Portanto, usando o flood_fill posso dar a posicao inicial 
+do player e deixar ele preencher todos as possibilidades. No fim, farei uma
+nova busca no mapa, caso 
 
 
 
-Ha uma exigencia para o
-formato e o significado para cada
 
-
-{
-	{110111},
-	{110111},
-	{110111},
-	{110111},
-	{110111}
-}
 
 MiniLibX MAN
 
