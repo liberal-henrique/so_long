@@ -57,7 +57,7 @@ Portanto, hoje tentarei fazer 3 coisas, que sao:
 				10000001
 				10000001
 				11111111
-	- Verificar se todas as rows tem o mesmo tamanho garantindo que 
+	- Verificar se todas as rows tem o mesmo tamanho garantindo que
 	mapa seja retangular;
 	- Fazer o checker de caminho possivel para o player pegar
 	todos os colectables e encontrar o exit.
@@ -84,11 +84,20 @@ deverao ser inseridas em cada campo. Por exemplo:
 dia 22/02/2023
 
 #Precisarei garantir que ha caminhos possiveis para o player alcancar todos
-os collectables. Portanto, usando o flood_fill posso dar a posicao inicial 
+os collectables. Portanto, usando o flood_fill posso dar a posicao inicial
 do player e deixar ele preencher todos as possibilidades. No fim, farei uma
-nova busca no mapa, caso 
+nova busca no mapa, caso
 
 
+dia 24/03/2022
+
+# Para que eu possa interpretar as informacoes do meu map deverei receber o
+o char ** nos minhas funcoes de render e de player_mov. Dessa forma, terei
+como percorrer as linhas e colunas e interpreta-las.
+#preciso ter todas as imagens que precisarei ja para rodar alguma coisa.
+
+#eu alterei o enderecamento do meu mapa. Apos isso minhas funcoes comecaram
+a dar segmentation fault.
 
 
 

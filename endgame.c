@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 17:12:13 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/22 20:24:40 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:18:37 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 int	endgame(t_vars *vars)
 {
-	(void)vars;
+	if (vars->mlx_win)
+	{
+		mlx_destroy_window(vars->mlx_ptr, vars->mlx_win);
+		mlx_destroy_display(vars->mlx_ptr);
+	}
 	exit(0);
-	return (0);
 }
 
 void	free_2d(char **array, int message)
 {
 	int	i;
 
-	i = 0;
-	while (array[i])
-	{
+	i = -1;
+	while (array[++i])
 		free(array[i]);
-		i++;
-	}
 	free(array);
 	if (message == 0)
 		write(1, "Hey!\n", 5);

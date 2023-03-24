@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:46:22 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/22 20:52:53 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/24 15:34:17 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ char	**clone(char **tab)
 	char	**new_arr;
 	int		max_y;
 
-	max_y = give_y_max(tab);
+	// max_y = give_y_max(tab);
+	max_y = 20;
 	new_arr = malloc(sizeof(char *) * (max_y + 1));
 	if (!new_arr)
 		return (NULL);
@@ -47,7 +48,7 @@ char	**clone(char **tab)
 	return (new_arr);
 }
 
-int	ft_validate(char **tab, t_vars size)
+int	ft_validate(char **tab)
 {
 	char	**copy;
 	int		i;
@@ -56,7 +57,7 @@ int	ft_validate(char **tab, t_vars size)
 	i = 0;
 	j = 0;
 	copy = clone(tab);
-	flood_fill(copy, size, 13, 4);
+	flood_fill(copy, 13, 4);
 	while (copy[i])
 	{
 		j = 0;
@@ -70,6 +71,7 @@ int	ft_validate(char **tab, t_vars size)
 			j++;
 		}
 		i++;
+		break ;
 	}
 	return (0);
 }

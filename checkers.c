@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:25:02 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/22 20:52:23 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/23 15:44:49 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	check_maps_elements(char **arr, t_vars *v)
 		free_2d(arr, 2);
 }
 
-void	flood_fill(char **tab, t_vars size, int x, int y)
+void	flood_fill(char **tab, int x, int y)
 {
 	int	collectables;
 
@@ -113,8 +113,8 @@ void	flood_fill(char **tab, t_vars size, int x, int y)
 		tab[y][x] = 'P';
 	if (tab[y][x] == 'E')
 		tab[y][x] = 'P';
-	flood_fill(tab, size, x, y + 1);
-	flood_fill(tab, size, x, y - 1);
-	flood_fill(tab, size, x + 1, y);
-	flood_fill(tab, size, x - 1, y);
+	flood_fill(tab, x, y + 1);
+	flood_fill(tab, x, y - 1);
+	flood_fill(tab, x + 1, y);
+	flood_fill(tab, x - 1, y);
 }

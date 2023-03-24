@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 21:58:16 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/22 21:29:09 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/24 13:52:29 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_img
 
 typedef struct s_vars
 {
+	char	**map;
 	void	*mlx_ptr;
 	void	*mlx_win;
 	void	*img;
@@ -76,6 +77,7 @@ typedef struct s_vars
 	int		i;
 	int		j;
 	t_list	fill;
+	int		*render;
 	void	*wall;
 	void	*collect;
 	void	*floor;
@@ -89,7 +91,13 @@ char		**deal_rec(int fd, int counter_row, char **array_2d);
 int			checker_ber(char *str, char *element);
 int			check_wall(char **arr, int i_max);
 void		check_maps_elements(char **arr, t_vars	*map);
-void		flood_fill(char **tab, t_vars size, int x, int y);
+void		flood_fill(char **tab, int x, int y);
+
+//-----------checkers_2------------//
+int			give_x_max(char **tab);
+int			give_y_max(char **tab);
+int			ft_validate(char **tab);
+char		**clone(char **tab);
 
 //-----------endgame------------//
 int			endgame(t_vars *vars);
@@ -103,10 +111,11 @@ int			clean_img(t_vars *vars);
 int			keypress(int keycode, t_vars *vars);
 void		img_start(t_vars *vars);
 
-//-----------image_2------------//
+//-----------image 2----------//
+void		render_wall(t_vars *vars);
+void		render(char **map, t_vars *vars, int x, int y);
+int			player_mov(void *params);
 void		window_init(t_vars *vars);
-int			ft_validate(char **tab, t_vars vars);
-char		**clone(char **tab);
 
 //--------------moviment--------//
 int			img_left(t_vars *vars);
