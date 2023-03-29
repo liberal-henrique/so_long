@@ -5,19 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/18 17:12:13 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/23 16:18:37 by lliberal         ###   ########.fr       */
+/*   Created: 2023/03/28 13:01:58 by lliberal          #+#    #+#             */
+/*   Updated: 2023/03/28 13:31:06 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-int	endgame(t_vars *vars)
+int	endgame(t_win window)
 {
-	if (vars->mlx_win)
+	if (window.win_ptr)
 	{
-		mlx_destroy_window(vars->mlx_ptr, vars->mlx_win);
-		mlx_destroy_display(vars->mlx_ptr);
+		mlx_destroy_window(window.mlx_ptr, window.win_ptr);
+		mlx_destroy_display(window.mlx_ptr);
 	}
 	exit(0);
 }

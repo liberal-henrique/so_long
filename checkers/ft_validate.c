@@ -1,52 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkers_2.c                                       :+:      :+:    :+:   */
+/*   ft_validate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/22 20:46:22 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/24 15:34:17 by lliberal         ###   ########.fr       */
+/*   Created: 2023/03/28 12:52:06 by lliberal          #+#    #+#             */
+/*   Updated: 2023/03/28 12:58:06 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-int	give_x_max(char **tab)
-{
-	int	max_x;
-
-	max_x = 0;
-	while (tab[0][max_x] != '\n' && tab[0][max_x])
-		max_x++;
-	return (max_x);
-}
-
-int	give_y_max(char **tab)
-{
-	int	max_y;
-
-	max_y = 0;
-	while (tab[max_y])
-		max_y++;
-	return (max_y);
-}
-
-char	**clone(char **tab)
-{
-	char	**new_arr;
-	int		max_y;
-
-	// max_y = give_y_max(tab);
-	max_y = 20;
-	new_arr = malloc(sizeof(char *) * (max_y + 1));
-	if (!new_arr)
-		return (NULL);
-	max_y = -1;
-	while (tab[++max_y])
-		new_arr[max_y] = ft_strdup(tab[max_y]);
-	return (new_arr);
-}
+#include "../so_long.h"
 
 int	ft_validate(char **tab)
 {

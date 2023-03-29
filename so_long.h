@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 21:58:16 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/24 13:52:29 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/29 17:54:41 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,82 +52,56 @@ typedef struct s_img
 	int		endian;
 	int		h;
 	int		w;
+	int		posi_x;
+	int		posi_y;
 }			t_img;
 
-typedef struct s_vars
+typedef struct s_types_map
 {
-	char	**map;
-	void	*mlx_ptr;
-	void	*mlx_win;
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-	int		bits_per_pixel;
-	int		line_length;
-	int		img_width;
-	int		img_height;
-	int		x;
-	int		y;
 	int		cnt_player;
 	int		cnt_exit;
 	int		cnt_collectable;
-	int		movs;
-	int		i;
-	int		j;
-	t_list	fill;
-	int		*render;
-	void	*wall;
-	void	*collect;
-	void	*floor;
-	void	*player;
-	void	*exit;
-}			t_vars;
+}			t_types_map;
+
+typedef struct s_ground
+{
+	char		**map;
+	t_types_map	elements;
+	t_img		wall;
+	t_img		collect;
+	t_img		floor;
+	t_img		exit;
+	int			x;
+	int			y;
+}			t_ground;
+
+typedef struct s_player
+{
+	double		x;
+	double		y;
+}			t_player;
+
+typedef struct s_object
+{
+	t_img		img;
+	double		x;
+	double		y;
+}			t_object;
+
+typedef struct s_win
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+	int			height;
+	int			width;
+	char		*name;
+	t_img		canvas;
+	t_ground	structure;
+	t_object	player;
+}				t_win;
 
 
-//-------------checker----//
-char		**deal_rec(int fd, int counter_row, char **array_2d);
-int			checker_ber(char *str, char *element);
-int			check_wall(char **arr, int i_max);
-void		check_maps_elements(char **arr, t_vars	*map);
-void		flood_fill(char **tab, int x, int y);
-
-//-----------checkers_2------------//
-int			give_x_max(char **tab);
-int			give_y_max(char **tab);
-int			ft_validate(char **tab);
-char		**clone(char **tab);
-
-//-----------endgame------------//
-int			endgame(t_vars *vars);
-void		free_2d(char **array, int message);
-
-//------------image--------------//
-int			put_message(t_vars *vars);
-void		my_mlx_pixel_put(t_vars *data, int x, int y, int color);
-int			start_img(t_vars *vars);
-int			clean_img(t_vars *vars);
-int			keypress(int keycode, t_vars *vars);
-void		img_start(t_vars *vars);
-
-//-----------image 2----------//
-void		render_wall(t_vars *vars);
-void		render(char **map, t_vars *vars, int x, int y);
-int			player_mov(void *params);
-void		window_init(t_vars *vars);
-
-//--------------moviment--------//
-int			img_left(t_vars *vars);
-int			img_right(t_vars *vars);
-int			img_up(t_vars *vars);
-int			img_down(t_vars *vars);
-
-//--------------split-----------//
-char		write_word(char *dest, const char *from, char set);
-int			word_count(const char *sr, char del);
-void		add_split(char **dst, const char *string, char delimiter);
-char		**ft_split(char const *s, char c);
+t_win		*so_long(void);
 
 //-------------get_next_line------//
 size_t		ft_strlen(char *s);
@@ -139,4 +113,32 @@ char		*ft_read(int fd, char *buf, char *locker);
 char		*ft_put_locked(char *line);
 char		*get_next_line(int fd);
 
+//-----------image 2----------//
+t_img		new_image(int w, int h, void *mlx_ptr);
+void		window_init(t_win *window);
+t_img		canvas_init(t_win *mlx_ptr, int width, int height);
+int			my_mlx_pixel_get(t_img *data, int x, int y);
+void		my_mlx_pixel_put(t_img *data, int x, int y, int color);
+t_img		new_image(int w, int h, void *mlx_ptr);
+t_img		load_image(char *path, void *mlx_ptr);
+void		print_image(t_img canvas, int x, int y, t_img	content);
+void		playable_area(t_img canvas, char **matrix);
+char		**deal_rec(int fd, int counter_row, char **array_2d);
+int			checker_ber(char *str, char *element);
+int			check_wall(char **arr, int i_max);
+void		check_maps_elements(char **arr, t_ground s);
+void		flood_fill(char **tab, int x, int y);
+int			ft_validate(char **tab);
+int			give_x_max(char **tab);
+int			give_y_max(char **tab);
+char		**clone(char **tab);
+int			endgame(t_win window);
+void		free_2d(char **array, int message);
+int			keypress(int keycode, t_win *position);
+void		images_init(t_win *window);
+void		print_ground(t_win *window, t_img canvas, char **arr);
+int			player_mov(void *window);
+void		put_floor_where_was_player(t_win *window);
+void		put_player_in_the_new_position(t_win *window);
+void		get_player_position(t_win *window);
 #endif
