@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:26:44 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/29 17:55:51 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/31 16:25:21 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	get_player_position(t_win *win)
 {
 	win->player.y = 0;
+	win->player.steps = 0;
 	while (win->structure.map[(int)win->player.y])
 	{
 		win->player.x = 0;

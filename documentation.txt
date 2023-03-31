@@ -100,6 +100,12 @@ como percorrer as linhas e colunas e interpreta-las.
 a dar segmentation fault.
 
 
+dia 30/03
+#O que sao meus colectables?
+	Sao objetos aos quais eu terei colisao mas desaparecerao a medida que
+passar por eles. Deveremos alterar o mapa renderizado a medida que o coletarmos.
+
+
 
 MiniLibX MAN
 

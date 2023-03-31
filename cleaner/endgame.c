@@ -6,18 +6,18 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:01:58 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/28 13:31:06 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/31 19:16:19 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	endgame(t_win window)
+int	endgame(t_win *window)
 {
-	if (window.win_ptr)
+	if (window->win_ptr)
 	{
-		mlx_destroy_window(window.mlx_ptr, window.win_ptr);
-		mlx_destroy_display(window.mlx_ptr);
+		mlx_destroy_window(window->mlx_ptr, window->win_ptr);
+		mlx_destroy_display(window->mlx_ptr);
 	}
 	exit(0);
 }

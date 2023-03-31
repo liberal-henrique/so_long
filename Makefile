@@ -6,7 +6,7 @@
 #    By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 15:05:43 by lliberal          #+#    #+#              #
-#    Updated: 2023/03/29 15:43:38 by lliberal         ###   ########.fr        #
+#    Updated: 2023/03/30 16:12:38 by lliberal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS		=	structs/structs.c \
 				images/mlx_pixel_render.c \
 				images/image_render.c \
 				images/print_ground.c \
+				images/print_collectables.c \
 				array_2d/create_array_2d.c \
 				array_2d/flood_fill.c \
 				checkers/checker_maps_elements.c \
@@ -50,6 +51,8 @@ all:	$(NAME)
 
 $(NAME): $(OBJS)
 		$(CC) $(SRCS) $(MLX_FLAGS) $(GET_I) -o $(NAME)
+in: all
+	./so_long ./maps/map.ber
 
 clean:
 		$(RM) $(OBJS)

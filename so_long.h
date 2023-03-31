@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 21:58:16 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/29 17:54:41 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/31 19:16:48 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <fcntl.h>
 # include <unistd.h>
-# include<stdlib.h>
-# include<stdio.h>
+# include <stdlib.h>
+# include <stdio.h>
 # include"mlx/mlx.h"
 
 # define MLX_SYNC_IMAGE_WRITABLE	1
@@ -83,10 +83,19 @@ typedef struct s_player
 
 typedef struct s_object
 {
-	t_img		img;
+	t_img		img[6];
+	int			flag;
 	double		x;
 	double		y;
+	int			steps;
 }			t_object;
+
+typedef struct s_collect
+{
+	t_img		img;
+	int			counter;
+
+}			t_collect;
 
 typedef struct s_win
 {
@@ -95,13 +104,14 @@ typedef struct s_win
 	int			height;
 	int			width;
 	char		*name;
+	t_img		steps[10];
 	t_img		canvas;
 	t_ground	structure;
 	t_object	player;
+	t_collect	collect;
 }				t_win;
 
-
-t_win		*so_long(void);
+t_win			*so_long(void);
 
 //-------------get_next_line------//
 size_t		ft_strlen(char *s);
@@ -116,6 +126,7 @@ char		*get_next_line(int fd);
 //-----------image 2----------//
 t_img		new_image(int w, int h, void *mlx_ptr);
 void		window_init(t_win *window);
+void		size_window(t_win *window);
 t_img		canvas_init(t_win *mlx_ptr, int width, int height);
 int			my_mlx_pixel_get(t_img *data, int x, int y);
 void		my_mlx_pixel_put(t_img *data, int x, int y, int color);
@@ -132,7 +143,7 @@ int			ft_validate(char **tab);
 int			give_x_max(char **tab);
 int			give_y_max(char **tab);
 char		**clone(char **tab);
-int			endgame(t_win window);
+int			endgame(t_win *window);
 void		free_2d(char **array, int message);
 int			keypress(int keycode, t_win *position);
 void		images_init(t_win *window);
@@ -141,4 +152,6 @@ int			player_mov(void *window);
 void		put_floor_where_was_player(t_win *window);
 void		put_player_in_the_new_position(t_win *window);
 void		get_player_position(t_win *window);
+void		print_collectables(t_win *window, t_img canvas, char **arr);
+void		print_steps(t_win *window, int steps);
 #endif

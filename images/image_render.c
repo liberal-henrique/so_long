@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:50:55 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/28 16:21:29 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/31 12:13:15 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ t_img	load_image(char *path, void *mlx_ptr)
 
 	image.img_ptr = mlx_xpm_file_to_image(mlx_ptr, \
 	path, &image.w, &image.h);
-	image.addr = mlx_get_data_addr(image.img_ptr, &image.bpp, \
+	if (!image.img_ptr)
+		write(1, "File could not be read\n", 23);
+	else
+		image.addr = mlx_get_data_addr(image.img_ptr, &image.bpp, \
 	&image.line_len, &image.endian);
 	return (image);
 }

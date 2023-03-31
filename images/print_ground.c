@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ground_init.c                                      :+:      :+:    :+:   */
+/*   print_ground.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:18:34 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/29 12:54:32 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/31 18:52:18 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,28 @@ void	print_ground(t_win *window, t_img canvas, char **arr)
 	}
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, \
 	canvas.img_ptr, 0, 0);
+}
+
+void	print_steps(t_win *window, int steps)
+{
+	t_img	*spaces[15];
+	int		i;
+	int		x;
+
+	i = 14;
+	spaces[i] = &window->steps[0];
+	while (steps > 0)
+	{
+		spaces[i] = &window->steps[(steps % 10)];
+		steps /= 10;
+		if (steps > 0)
+			i--;
+	}
+	x = 0;
+	while (i < 15)
+	{
+		print_image(window->canvas, (96 + (32 * x)), window->canvas.h - 50, \
+		*spaces[i++]);
+		x++;
+	}
 }
