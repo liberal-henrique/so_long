@@ -6,15 +6,14 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:54:20 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/31 17:20:47 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/03 17:46:26 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	images_init(t_win *window)
+void	player_move(t_win *window)
 {
-	window->player.flag = 1;
 	window->player.img[4] = load_image("public/pac_mouth_closed.xpm", \
 	window->mlx_ptr);
 	window->player.img[3] = load_image("public/pac_down.xpm", \
@@ -25,12 +24,10 @@ void	images_init(t_win *window)
 	window->mlx_ptr);
 	window->player.img[0] = load_image("public/pac_left.xpm", \
 	window->mlx_ptr);
-	window->collect.img = load_image("public/collectable.xpm", \
-	window->mlx_ptr);
-	window->structure.wall = load_image("public/wall.xpm", window->mlx_ptr);
-	window->structure.floor = load_image("public/black.xpm", window->mlx_ptr);
-	window->structure.exit = load_image("public/door.xpm", window->mlx_ptr);
+}
 
+void	images_counter_steps(t_win *window)
+{
 	window->steps[0] = load_image("public/num/zero.xpm", \
 	window->mlx_ptr);
 	window->steps[1] = load_image("public/num/um.xpm", \
@@ -51,4 +48,36 @@ void	images_init(t_win *window)
 	window->mlx_ptr);
 	window->steps[9] = load_image("public/num/nove.xpm", \
 	window->mlx_ptr);
+}
+
+void	images_ground(t_win *window)
+{
+	window->collect.img = load_image("public/collectable.xpm", \
+	window->mlx_ptr);
+	window->structure.wall = load_image("public/wall.xpm", window->mlx_ptr);
+	window->structure.floor = load_image("public/black.xpm", window->mlx_ptr);
+	window->structure.exit = load_image("public/door.xpm", window->mlx_ptr);
+}
+
+void	images_enemy(t_win	*window)
+{
+	window->enemy.img[0] = load_image("public/ene_up.xpm", \
+	window->mlx_ptr);
+	window->enemy.img[1] = load_image("public/ene_up.xpm", \
+	window->mlx_ptr);
+	window->enemy.img[2] = load_image("public/ene_up.xpm", \
+	window->mlx_ptr);
+	window->enemy.img[3] = load_image("public/ene_up.xpm", \
+	window->mlx_ptr);
+}
+
+void	images_init(t_win *window)
+{
+	window->player.flag = 1;
+	window->structure.ground = new_image(window->canvas.w, window->canvas.h, \
+	window->mlx_ptr);
+	images_enemy(window);
+	player_move(window);
+	images_counter_steps(window);
+	images_ground(window);
 }

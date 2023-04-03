@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:25:02 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/28 12:50:42 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/03 17:05:01 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	check_maps_elements(char **arr, t_ground s)
 		{
 			if (arr[s.x][s.y] != '1' && arr[s.x][s.y] != '0' &&
 				arr[s.x][s.y] != 'P' && arr[s.x][s.y] != 'E' &&
-				arr[s.x][s.y] != 'C')
+				arr[s.x][s.y] != 'C' && arr[s.x][s.y] != 'F')
 				free_2d(arr, 1);
 			if (arr[s.x][s.y] == 'P')
 				s.elements.cnt_player = s.elements.cnt_player + 1;

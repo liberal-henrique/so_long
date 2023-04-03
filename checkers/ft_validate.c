@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 12:52:06 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/28 12:58:06 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/03 15:07:03 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_validate(char **tab)
 			j++;
 		}
 		i++;
-		break ;
 	}
+	free_2d(copy, 0);
 	return (0);
 }

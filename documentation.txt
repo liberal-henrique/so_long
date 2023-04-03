@@ -105,6 +105,16 @@ dia 30/03
 	Sao objetos aos quais eu terei colisao mas desaparecerao a medida que
 passar por eles. Deveremos alterar o mapa renderizado a medida que o coletarmos.
 
+dia 03/04/
+Mandatorio
+(CHECK)- A porta ter alguma colisao quando todos os colectables forem coletados.
+(CHECK)- Resolver todos os erros leaks que ha no game;
+(CHECK)- desmembrar a Funcoes Key_Press
+Bonus
+- Colocar inimigos e fazer o movimento de perseguicao deles sem muros;
+- Fazer a colisao do inimigo comigo e ele me mantando;
+
+- Percerber Todos os topicos que ainda faltam para conclusao do projeto
 
 
 MiniLibX MAN

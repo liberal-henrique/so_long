@@ -6,7 +6,7 @@
 #    By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 15:05:43 by lliberal          #+#    #+#              #
-#    Updated: 2023/03/30 16:12:38 by lliberal         ###   ########.fr        #
+#    Updated: 2023/04/03 15:05:02 by lliberal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,7 @@ NAME		=	so_long
 INCLUDES	=	-Iheaders/
 GET_I		=	utils/get_next_line/get_next_line.h
 
-SRCS		=	structs/structs.c \
-				utils/get_next_line/get_next_line.c \
+SRCS		=	utils/get_next_line/get_next_line.c \
 				utils/get_next_line/get_next_line_utils.c \
 				main.c \
 				canvas/canvas_init.c \
