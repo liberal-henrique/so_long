@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 21:58:16 by lliberal          #+#    #+#             */
-/*   Updated: 2023/04/03 17:46:03 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/04 17:07:23 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_types_map
 	int		cnt_player;
 	int		cnt_exit;
 	int		cnt_collectable;
+	int		cnt_enemies;
 }			t_types_map;
 
 typedef struct s_ground
@@ -84,7 +85,7 @@ typedef struct s_player
 
 typedef struct s_object
 {
-	t_img		img[5];
+	t_img		img[6];
 	int			flag;
 	double		x;
 	double		y;
@@ -111,6 +112,7 @@ typedef struct s_win
 	t_object	player;
 	t_object	enemy;
 	t_collect	collect;
+	t_types_map	counter;
 }				t_win;
 
 t_win			*so_long(void);
@@ -141,22 +143,25 @@ int				checker_ber(char *str, char *element);
 int				check_wall(char **arr, int i_max);
 void			check_maps_elements(char **arr, t_ground s);
 void			flood_fill(char **tab, int x, int y);
-int				ft_validate(char **tab);
+int				ft_validate(t_win *window, char **tab);
 int				give_x_max(char **tab);
 int				give_y_max(char **tab);
 char			**clone(char **tab);
 int				endgame(t_win *window);
 void			free_2d(char **array, int message);
 int				keypress(int keycode, t_win *position);
-void			player_move(t_win *window);
 void			images_counter_steps(t_win *window);
 void			images_init(t_win *window);
 void			print_ground(t_win *window, t_img canvas, char **arr);
-int				player_mov(void *window);
+int				action(void *window);
 void			put_floor_where_was_player(t_win *window);
 void			put_player_in_the_new_position(t_win *window);
 void			get_player_position(t_win *window);
 void			get_enemy_position(t_win *win);
 void			print_collectables(t_win *window, t_img canvas, char **arr);
 void			print_steps(t_win *window, int steps);
+void			set_enemy_initial_position(t_win *window);
+t_img			return_img_player(t_win *window, int flag);
+void			init_enemy(t_win *window);
+int				colisions(t_win *window, t_object *obj, double x, double y);
 #endif

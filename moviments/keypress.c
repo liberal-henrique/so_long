@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:06:50 by lliberal          #+#    #+#             */
-/*   Updated: 2023/04/03 16:35:55 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/04 15:52:28 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,18 @@ int	flag_player_position(int keycode, t_win *position)
 		position->player.flag = 2;
 	else if (keycode == KEY_S)
 		position->player.flag = 3;
+	return (0);
 }
-// printf("O valor da tecla: %i\n", keycode);
+
+int	ft_print_num(int num)
+{
+	char	*str;
+
+	str = "0123456789";
+	if (num > 9)
+		ft_print_num(num / 10);
+	return (write(1, &str[num % 10], 1));
+}
 
 int	keypress(int keycode, t_win *position)
 {
@@ -79,4 +89,6 @@ int	keypress(int keycode, t_win *position)
 		if (colisions(position, &position->player, 0, 0.5f) == 0)
 			position->player.steps += 1;
 	}
+	ft_print_num(position->player.steps);
+	return (write(1, "\n", 1));
 }

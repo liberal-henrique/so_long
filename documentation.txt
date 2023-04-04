@@ -111,10 +111,14 @@ Mandatorio
 (CHECK)- Resolver todos os erros leaks que ha no game;
 (CHECK)- desmembrar a Funcoes Key_Press
 Bonus
-- Colocar inimigos e fazer o movimento de perseguicao deles sem muros;
-- Fazer a colisao do inimigo comigo e ele me mantando;
+(CHECK)- Colocar inimigos e fazer o movimento de perseguicao deles sem muros;
+
 
 - Percerber Todos os topicos que ainda faltam para conclusao do projeto
+
+dia 04/04
+- Fazer a colisao do inimigo comigo e ele me mantando;
+- Entender e resolver pq telas gigantescas quebram
 
 
 MiniLibX MAN

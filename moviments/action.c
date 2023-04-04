@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_validate.c                                      :+:      :+:    :+:   */
+/*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 12:52:06 by lliberal          #+#    #+#             */
-/*   Updated: 2023/04/04 16:53:54 by lliberal         ###   ########.fr       */
+/*   Created: 2023/04/04 12:10:26 by lliberal          #+#    #+#             */
+/*   Updated: 2023/04/04 16:50:22 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_validate(t_win *window, char **tab)
+int	action(void *window)
 {
-	char	**copy;
-	int		i;
-	int		j;
+	t_win	*aux;
 
-	i = 0;
-	copy = clone(tab);
-	if (!copy)
-		return (0);
-	flood_fill(copy, 1, 1);
-	while (copy[i])
-	{
-		j = 0;
-		while (copy[i][j] && copy[i][j] != '\n')
-		{
-			if (copy[i][j] == 'E' || copy[i][j] == 'C')
-			{
-				free_2d(copy, 0);
-				free_2d(tab, 4);
-			}
-			j++;
-		}
-		i++;
-	}
-	free_2d(copy, 0);
+	aux = (t_win *)window;
+	print_ground(aux, aux->canvas, aux->structure.map);
+	print_collectables(aux, aux->canvas, aux->structure.map);
+	print_image(aux->canvas, (int)(aux->player.x * 32), \
+	(int)(aux->player.y * 32), return_img_player(aux, aux->player.flag));
+	print_steps(aux, aux->player.steps);
+	if (aux->counter.cnt_enemies != 0)
+		init_enemy(window);
 	return (0);
 }

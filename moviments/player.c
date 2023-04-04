@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_player_position.c                              :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 15:26:44 by lliberal          #+#    #+#             */
-/*   Updated: 2023/04/03 17:12:20 by lliberal         ###   ########.fr       */
+/*   Created: 2023/04/04 12:06:58 by lliberal          #+#    #+#             */
+/*   Updated: 2023/04/04 17:11:17 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+t_img	return_img_player(t_win *window, int flag)
+{
+	static int	i;
+
+	if (i >= 20 && i <= 150)
+		flag = 4;
+	if (i > 250)
+		i = 0;
+	i++;
+	return (window->player.img[flag]);
+}
 
 void	get_player_position(t_win *win)
 {
@@ -31,20 +43,3 @@ void	get_player_position(t_win *win)
 	}
 }
 
-void	get_enemy_position(t_win *win)
-{
-	win->enemy.y = 0;
-	while (win->structure.map[(int)win->enemy.y])
-	{
-		win->enemy.x = 0;
-		while (win->structure.map[(int)win->enemy.y][(int)win->enemy.x] \
-		!= '\n' && win->structure.map[(int)win->enemy.y][(int)win->enemy.x])
-		{
-			if (win->structure.map[(int)win->enemy.y][(int)win->enemy.x] \
-			== 'F')
-				return ;
-			win->enemy.x++;
-		}
-		win->enemy.y++;
-	}
-}

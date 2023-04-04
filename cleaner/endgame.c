@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:01:58 by lliberal          #+#    #+#             */
-/*   Updated: 2023/04/03 14:57:09 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/04 11:59:02 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ void	clean_images(t_win *window)
 	i = -1;
 	while (++i < 10)
 		mlx_destroy_image(window->mlx_ptr, window->steps[i].img_ptr);
+	i = -1;
+	while (++i < 4)
+		mlx_destroy_image(window->mlx_ptr, window->enemy.img[i].img_ptr);
 	mlx_destroy_image(window->mlx_ptr, window->structure.wall.img_ptr);
 	mlx_destroy_image(window->mlx_ptr, window->structure.floor.img_ptr);
 	mlx_destroy_image(window->mlx_ptr, window->structure.exit.img_ptr);

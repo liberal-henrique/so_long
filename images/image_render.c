@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:50:55 by lliberal          #+#    #+#             */
-/*   Updated: 2023/04/03 17:38:38 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/03 18:03:41 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ void	print_image(t_img canvas, int x, int y, t_img content)
 	{
 		content.posi_x = -1;
 		while (++content.posi_x < content.w)
+		{
 			my_mlx_pixel_put(&canvas, content.posi_x + x, content.posi_y + y, \
 			my_mlx_pixel_get(&content, content.posi_x, content.posi_y));
+		}
 	}
 }

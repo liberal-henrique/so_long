@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:05:10 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/30 15:53:44 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/03 18:04:32 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void	print_collectables(t_win *window, t_img canvas, char **arr)
 		}
 	}
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, \
-	canvas.img_ptr, 0, 0);
+	window->canvas.img_ptr, 0, 0);
 }

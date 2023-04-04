@@ -6,7 +6,7 @@
 #    By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 15:05:43 by lliberal          #+#    #+#              #
-#    Updated: 2023/04/03 15:05:02 by lliberal         ###   ########.fr        #
+#    Updated: 2023/04/04 16:02:51 by lliberal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,9 @@ SRCS		=	utils/get_next_line/get_next_line.c \
 				checkers/ft_validate.c \
 				checkers/utils_check.c \
 				moviments/keypress.c \
-				moviments/get_player_position.c \
+				moviments/player.c \
+				moviments/enemy.c \
+				moviments/action.c \
 				cleaner/endgame.c
 
 
@@ -50,6 +52,7 @@ all:	$(NAME)
 
 $(NAME): $(OBJS)
 		$(CC) $(SRCS) $(MLX_FLAGS) $(GET_I) -o $(NAME)
+
 in: all
 	./so_long ./maps/map.ber
 

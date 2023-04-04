@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:54:20 by lliberal          #+#    #+#             */
-/*   Updated: 2023/04/03 17:46:26 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/04 17:48:50 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,21 +61,19 @@ void	images_ground(t_win *window)
 
 void	images_enemy(t_win	*window)
 {
-	window->enemy.img[0] = load_image("public/ene_up.xpm", \
+	window->enemy.img[0] = load_image("public/enemy_up.xpm", \
 	window->mlx_ptr);
-	window->enemy.img[1] = load_image("public/ene_up.xpm", \
+	window->enemy.img[1] = load_image("public/enemy_right.xpm", \
 	window->mlx_ptr);
-	window->enemy.img[2] = load_image("public/ene_up.xpm", \
+	window->enemy.img[2] = load_image("public/enemy_left.xpm", \
 	window->mlx_ptr);
-	window->enemy.img[3] = load_image("public/ene_up.xpm", \
+	window->enemy.img[3] = load_image("public/enemy_down.xpm", \
 	window->mlx_ptr);
 }
 
 void	images_init(t_win *window)
 {
 	window->player.flag = 1;
-	window->structure.ground = new_image(window->canvas.w, window->canvas.h, \
-	window->mlx_ptr);
 	images_enemy(window);
 	player_move(window);
 	images_counter_steps(window);
