@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 10:48:38 by lliberal          #+#    #+#             */
-/*   Updated: 2023/04/03 18:03:14 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/05 09:54:50 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {
 	char	*dst;
 
-	// if (color == 0x000000)
-	// 	return ;
 	dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
 	*(unsigned int *) dst = color;
 }

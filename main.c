@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 19:18:15 by lliberal          #+#    #+#             */
-/*   Updated: 2023/04/04 16:03:02 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:09:52 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 		exit(write(1, "Error\n", 6));
 	window.structure.map = deal_rec(fd, 0, NULL);
 	check_maps_elements(window.structure.map, window.structure);
-	ft_validate(&window, window.structure.map);
+	ft_validate(window.structure.map);
 	size_window(&window);
 	window_init(&window);
 	window.canvas = canvas_init(window.mlx_ptr, \

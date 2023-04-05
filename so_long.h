@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 21:58:16 by lliberal          #+#    #+#             */
-/*   Updated: 2023/04/04 17:07:23 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:10:08 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include"mlx/mlx.h"
+# include "mlx/mlx.h"
 
 # define MLX_SYNC_IMAGE_WRITABLE	1
 # define MLX_SYNC_WIN_FLUSH_CMD	2
@@ -137,13 +137,13 @@ void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
 t_img			new_image(int w, int h, void *mlx_ptr);
 t_img			load_image(char *path, void *mlx_ptr);
 void			print_image(t_img canvas, int x, int y, t_img	content);
-void			playable_area(t_img canvas, char **matrix);
+void			playable_area(char **matrix);
 char			**deal_rec(int fd, int counter_row, char **array_2d);
 int				checker_ber(char *str, char *element);
 int				check_wall(char **arr, int i_max);
 void			check_maps_elements(char **arr, t_ground s);
 void			flood_fill(char **tab, int x, int y);
-int				ft_validate(t_win *window, char **tab);
+int				ft_validate(char **tab);
 int				give_x_max(char **tab);
 int				give_y_max(char **tab);
 char			**clone(char **tab);
@@ -158,7 +158,7 @@ void			put_floor_where_was_player(t_win *window);
 void			put_player_in_the_new_position(t_win *window);
 void			get_player_position(t_win *window);
 void			get_enemy_position(t_win *win);
-void			print_collectables(t_win *window, t_img canvas, char **arr);
+void			print_collectables(t_win *window, char **arr);
 void			print_steps(t_win *window, int steps);
 void			set_enemy_initial_position(t_win *window);
 t_img			return_img_player(t_win *window, int flag);

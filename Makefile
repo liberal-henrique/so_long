@@ -6,13 +6,13 @@
 #    By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 15:05:43 by lliberal          #+#    #+#              #
-#    Updated: 2023/04/04 16:02:51 by lliberal         ###   ########.fr        #
+#    Updated: 2023/04/05 10:31:35 by lliberal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # CC			=	gcc -g3 -fsanitize=address
 CC			=	gcc -g3
-# CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror
 RM			=	/bin/rm -f
 NAME		=	so_long
 INCLUDES	=	-Iheaders/
@@ -43,7 +43,6 @@ SRCS		=	utils/get_next_line/get_next_line.c \
 
 OBJS		=	$(SRCS:.c=.o)
 
-# SRC_DIR = src
 MLX_LIB_DIR = mlx/
 L_Flags = /usr/lib -lXext -lX11
 MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx -L$(L_Flags)
@@ -51,7 +50,7 @@ MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx -L$(L_Flags)
 all:	$(NAME)
 
 $(NAME): $(OBJS)
-		$(CC) $(SRCS) $(MLX_FLAGS) $(GET_I) -o $(NAME)
+		$(CC) $(CFLAGS) $(SRCS) $(MLX_FLAGS) $(GET_I) -o $(NAME)
 
 in: all
 	./so_long ./maps/map.ber

@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 12:55:26 by lliberal          #+#    #+#             */
-/*   Updated: 2023/04/04 12:45:29 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:01:07 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,3 @@ void	flood_fill(char **tab, int x, int y)
 	flood_fill(tab, x + 1, y);
 	flood_fill(tab, x - 1, y);
 }
-

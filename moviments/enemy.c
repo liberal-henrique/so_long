@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 12:05:44 by lliberal          #+#    #+#             */
-/*   Updated: 2023/04/04 18:37:58 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:11:39 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,11 @@ void	set_enemy_initial_position(t_win *window)
 	window->enemy.y = 100;
 }
 
-// int	test_colision(t_win *window, t_object *obj, double x, double y)
-// {
-// 	if (x2 == (int)window->player.x && y2 == (int)window->player.y)
-
-// }
-
 int	colisions_enemy(t_win *window, t_object *obj, double x, double y)
 {
-	double	x1;
-	double	y1;
-	int		x2;
-	int		y2;
-
-	x1 = 0;
-	y1 = 0;
-	if (x >= 0)
-		x1 = 0.2f;
-	if (y >= 0)
-		y1 = 0.2f;
 	x += obj->x;
 	y += obj->y;
-	x2 = x1 + x;
-	y2 = y1 + y;
-	printf("Enemy: %i\n", y2);
-	printf("Enemy: %i\n", x2);
-	printf("Player: %f\n", window->player.x);
-	printf("Player: %f\n", window->player.y);
-	if (x2 == (int)window->player.x && y2 == (int)window->player.y)
+	if ((int)(x) == (int)window->player.x && (int)y == (int)window->player.y)
 	{
 		write(1, "You lose\n", 9);
 		endgame(window);
@@ -59,25 +36,25 @@ t_img	return_img_enemy(t_win *window, int flag)
 {
 	if (flag == 0)
 	{
-		if (colisions_enemy(window, &window->enemy, 0, -0.01f))
+		if (colisions_enemy(window, &window->enemy, 0, -0.005f))
 			window->enemy.y -= 0.001f;
 		return (window->enemy.img[0]);
 	}
 	else if (flag == 1)
 	{
-		if (colisions_enemy(window, &window->enemy, 0.01f, 0))
+		if (colisions_enemy(window, &window->enemy, 0.005f, 0))
 			window->enemy.x += 0.001f;
 		return (window->enemy.img[1]);
 	}
 	else if (flag == 2)
 	{
-		if (colisions_enemy(window, &window->enemy, -0.01f, 0))
+		if (colisions_enemy(window, &window->enemy, -0.005f, 0))
 			window->enemy.x -= 0.001f;
 		return (window->enemy.img[2]);
 	}
 	else if (flag == 3)
 	{
-		if (colisions_enemy(window, &window->enemy, 0, 0.01f))
+		if (colisions_enemy(window, &window->enemy, 0, 0.005f))
 			window->enemy.y += 0.001f;
 		return (window->enemy.img[3]);
 	}

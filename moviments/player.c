@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 12:06:58 by lliberal          #+#    #+#             */
-/*   Updated: 2023/04/04 17:11:17 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/05 09:53:13 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,3 @@ void	get_player_position(t_win *win)
 		win->player.y++;
 	}
 }
-

@@ -6,13 +6,13 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 12:52:06 by lliberal          #+#    #+#             */
-/*   Updated: 2023/04/04 16:53:54 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:10:31 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_validate(t_win *window, char **tab)
+int	ft_validate(char **tab)
 {
 	char	**copy;
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:01:58 by lliberal          #+#    #+#             */
-/*   Updated: 2023/04/04 11:59:02 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:00:22 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,3 @@ void	free_2d(char **array, int message)
 	if (message == 4)
 		exit(write(1, "No path possible\n", 17));
 }
-
